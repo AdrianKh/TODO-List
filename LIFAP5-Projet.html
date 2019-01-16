@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<html lang="en">
+<head>
+  <title id="titre">MyTODOS Manager (LIFAP5-Projet)</title>
+  <style>
+    .brand {height: 25px;}
+  </style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8"/>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+  <!-- script de base pour le projet -->
+  <!--<script src="./LIFAP5-Projet.js" type="text/javascript"></script> -->
+  <!-- style of the site-->
+  <link rel="stylesheet" href="LIFAP5-Projet.css">
+  <!-- using JQuery for styleing-->
+  <script src="./JS/LIFAP5-Projet.js" type="text/javascript"></script>
+</head>
+<body>
+  <!--  -->
+  <div class="bg-light ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 height-70 d-flex justify-content-between align-items-center">
+          <h3 id="name">Light</h3>
+          <span id="modify-user" type="button" class="btn btn-outline-success">Modify</span>
+        </div>
+        <div class="col-md-4 height-70 d-flex justify-content-between align-items-center">
+          <sapn>My TODOS</sapn>
+          <select id="user_todo_sort">
+            <option disabled selected>Trier</option>
+            <option value="Titre">Titre</option>
+            <option value="Date">Date</option>
+            <option value="Etat">Etat</option>
+          </select>
+        </div>
+        <div class="col-md-3 height-70 d-flex justify-content-between align-items-center">
+          <span>Mentioned TODOS</span>
+          <select id="mentioned_todo_sort">
+            <option disabled selected>Trier</option>
+            <option value="Titre">Titre</option>
+            <option value="Date">Date</option>
+            <option value="Etat">Etat</option>
+          </select>
+        </div>
+        <div class="col-md-2 height-70 d-flex align-items-center">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon2">
+            <span class="input-group-addon btn btn-outline-success">
+              <img src="img/search.svg" class="img-20x20" alt="">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid margin-top-2">
+  <div class="row">
+    <!--
+                    current user infos
+      you have to follow the same html strcture in js to
+      replace the content of current-user-infos.
+      or, you can simply use the id for eache element to modify then separeatly.
+    -->
+    <div id="current-user-info" class="col-md-3 margin-bottom-2">
+      <img id="current-user-img" class="img-fluid center-block" src="./img/2018-03-20-romuald.png" alt="current user image">
+      <a id="current-user-email" class="center-block" href="mailto:exemple@exple.com">exemple@exple.com</a><br>
+      <div class="container-fluid bg-light">
+        <!-- the details of the selected TODO on right -->
+        <div id="todo-details" class="row">
+            <img id="selected-todo-status" class="img-50x50 d-inline margin-5" src="./img/cloud-done-symbol.png">
+            <div class="d-inline margin-5">
+              <h3 id="selected-todo-title" class="d-inline">TODO 2</h3>
+              <br>
+              <span id="selected-todo-date" class="text-muted">15 Avril 2018</span>
+            </div>
+            <span id="selected-todo-peoples">
+              <a href="mailto:exemple@exple.com">Manu</a>
+              <a href="mailto:exemple@exple.com">Ramoud</a>
+              <a href="mailto:exemple@exple.com">Paul</a>
+            </span>
+            <p id="selected-todo-desc" class="bg-light text-justify">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div id="list-of-current-user-todos" class="col-md-12 bg-light">
+        <!-- Todo list to replace this structure should be respected-->
+        <div class="flex-row padding-2">
+          <img class="img-50x50 flex-col-1" src="./img/cloud-done-symbol.png" alt="Status">
+          <div class="flex-col-10">
+            <div>Courses pot de l'association</div>
+            <span class="text-muted">15 Avril 2018</span>
+            <span>
+              <a href="mailto:exemple@exple.com">Manu</a>
+              <a href="mailto:exemple@exple.com">Ramoud</a>
+            </span>
+          </div>
+          <span class="flex-col-2">
+            <img class="img-30x30 btn-edit d-inline" src="./img/edit.svg">
+            <img class="img-30x30 btn-del d-inline" src="./img/trash-alt.svg">
+          </span>
+        </div>
+
+        <div class="flex-row padding-2">
+          <img class="img-50x50 flex-col-1" src="./img/cloud-done-symbol.png" alt="Status">
+          <div class="flex-col-10">
+            <div>Courses pot de l'association</div>
+            <span class="text-muted">15 Avril 2018</span>
+            <span>
+              <a href="mailto:exemple@exple.com">Manu</a>
+              <a href="mailto:exemple@exple.com">Ramoud</a>
+            </span>
+          </div>
+          <span class="flex-col-2">
+            <img class="img-30x30 btn-edit d-inline" src="./img/edit.svg">
+            <img class="img-30x30 btn-del d-inline" src="./img/trash-alt.svg">
+          </span>
+        </div>
+
+      </div>
+      <button class="float-right btn-add" type="button" class="btn btn-info pull-right btn-lg" data-toggle="modal" data-target="#uploadModal">
+        <img  src="./img/add-circle.svg"</img>
+      </button>
+
+
+
+      <div class="modal fade" id="uploadModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add a new TODO</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="upload-desc">Titre: *</label>
+                <input class="form-control" id="upload-title" name="titre" type="text">
+              </div>
+              <div class="form-group">
+                <label for="upload-state">Statut:</label>
+                <select id="upload-state">
+                  <option value="TODO">TODO</option>
+                  <option value="DOING">DOING</option>
+                  <option value="DONE">DONE</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="upload-deadline">Deadline: *</label>
+                <input class="form-control" id="upload-dead" name="deadline" type="date">
+              </div>
+              <div class="form-group">
+                <label for="upload-desc">Description: </label>
+                <textarea class="form-control" id="upload-desc" name="desc" type="text" rows="4" cols="50"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="upload-people">Tag Peoples: </label>
+                <input class="form-control" id="upload-ment" name="people" type="text">
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button id="upload-button" type="button" class="btn btn-outline-success" data-dismiss="modal">Add</button>
+              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <div class="col-md-4">
+      <div id="list-of-other-user-info" class="col-md-12 bg-light">
+        <div class="flex-row padding-2">
+          <img class="img-50x50 flex-col-1" src="./img/cloud-done-symbol.png" alt="Status">
+          <div class="flex-col-10">
+            <div>
+              <a class="padding-2" href="mailto:exemple@exple.com">Paul</a>
+              <span class="padding-2">TODO 1</span>
+            </div>
+            <span class="text-muted">15 Avril 2018</span>
+            <span>
+              <a href="mailto:exemple@exple.com">Manu</a>
+            </span>
+          </div>
+        </div>
+    
+        
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="modal fade" id="uploadModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add a new TODO</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="upload-desc">Titre: *</label>
+          <input class="form-control" id="upload-title2" name="titre" type="text">
+        </div>
+        <div class="form-group">
+          <label for="upload-state">Statut:</label>
+          <select id="upload-state2">
+            <option value="TODO">TODO</option>
+            <option value="DOING">DOING</option>
+            <option value="DONE">DONE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="upload-deadline">Deadline: *</label>
+          <input class="form-control" id="upload-dead2" name="deadline" type="date">
+        </div>
+        <div class="form-group">
+          <label for="upload-desc">Description: </label>
+          <textarea class="form-control" id="upload-desc2" name="desc" type="text" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="upload-people">Tag Peoples: </label>
+          <input class="form-control" id="upload-ment2" name="people" type="text">
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button id="upload-button2" type="button" class="btn btn-outline-success" data-dismiss="modal">Add</button>
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <span class="height-70 d-flex justify-content-around align-items-center">
+          <h6 class="text-muted">CC</h6>
+          <h6 class="text-muted">Adrian Khelili</h6>
+          <h6 class="text-muted">Sarah Moul...</h6>
+        </span>
+      </div>
+      <div class="col-md-4" id="filters-user-todo">
+        <div class="row height-70 padding-2-no-top">
+          <div class="col-md-4 height-70 d-flex justify-content-around align-items-center filter-user-todo">
+            <span>DONE</span>
+            <img class="img-50x50" src="img/cloud-done.svg" alt="">
+          </div>
+          <div class="col-md-4 height-70 d-flex justify-content-around align-items-center filter-user-todo">
+            <span>DOING</span>
+            <img class="img-50x50" src="img/run.svg" alt="">
+          </div>
+          <div class="col-md-4 height-70 d-flex justify-content-around align-items-center filter-user-todo">
+            <span>TODO</span>
+            <img class="img-50x50" src="img/bookmark.svg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"  id="filters-mentioned-todo">
+        <div class="row height-70 padding-2-no-top">
+          <div class="col-md-4 height-70 d-flex justify-content-around align-items-center filter-mentioned-todo">
+            <span>DONE</span>
+            <img class="img-50x50" src="img/cloud-done.svg" alt="">
+          </div>
+          <div class="col-md-4 height-70 d-flex justify-content-around align-items-center filter-mentioned-todo">
+            <span>DOING</span>
+            <img class="img-50x50" src="img/run.svg" alt="">
+          </div>
+          <div class="col-md-4 height-70 d-flex justify-content-around align-items-center filter-mentioned-todo">
+            <span>TODO</span>
+            <img class="img-50x50" src="img/bookmark.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
